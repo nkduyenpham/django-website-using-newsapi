@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>News for You</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .list {
+            background-color: #fff;
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .list a {
+            color: #333;
+        }
+
+        .post-title {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .post-subtitle {
+            color: #666;
+        }
+
+        .post-author {
+            margin: 10px 0;
+        }
+
+        .post-author a {
+            color: #007bff;
+            text-decoration: underline;
+        }
+
+        .post-date {
+            color: #666;
+        }
+
+        #topic-selector {
+            padding: 10px;
+            font-size: 16px;
+        }
+        
+    </style>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+</head>
+
+<body>
+    <div class="header">
+        <h1><a href="{% url 'home' %}" style="color: #fff; text-decoration: none;">What's the News?</a></h1>
+    </div>
+
+    <div class="container">
+        <h2>Choose a Topic You Want to Read</h2>
+        <select id="topic-selector">
+            <option value="business">Business</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="general">General</option>
+            <option value="health">Health</option>
+            <option value="science">Science</option>
+            <option value="sports">Sports</option>
+            <option value="technology">Technology</option>
+        </select>
+    </div>
+
+    <div class="container">
+        {% for title, description, url, author, date in all_news %}
+
+        <div class="list">
+            <a href="{{ url }}">
+                <h2 class="post-title">{{ title }}</h2>
+            </a>
+            <p class="post-subtitle">{{ description }}</p>
+
+            <p class="post-author">Posted by <a href="#">{{ author }}</a> on <span class="post-date">{{ date }}</span></p>
+        </div>
+
+        <!-- Divider-->
+
+        {% endfor %}
+
+    </div>
+    <script>
+        const topicSelector = document.getElementById("topic-selector");
+    
+        topicSelector.addEventListener("change", function() {
+            const selectedTopic = topicSelector.value;
+            console.log("Selected Topic: " + selectedTopic);
+    
+            // Make an AJAX request to the server
+            $.ajax({
+                url: '{% url "home" %}',  // Replace with the correct URL pattern name
+                type: 'GET',
+                data: { selectedTopic: selectedTopic },
+                success: function(data) {
+                    // Update the content on the page with the response from the server
+                    // Assuming you have a div with the ID 'content' where you want to display the data
+                    $('#content').html(data);
+                },
+                error: function(error) {
+                    console.error("Error fetching data:", error);
+                }
+            });
+        });
+    </script>
+</body>
+ß
+</html>
