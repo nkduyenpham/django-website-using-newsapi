@@ -5,7 +5,7 @@ from django.http import JsonResponse
 # Create your views here.
 
 def get_news_data(selectedTopic):
-    newsapi = NewsApiClient(api_key='fe651200121e4ca6afffb7d0edad9dd5')
+    newsapi = NewsApiClient(api_key='enter_your_api')
     try:
         topnews = newsapi.get_top_headlines(category=selectedTopic) # catch information from dropdown box
         return topnews
