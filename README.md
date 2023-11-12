@@ -34,4 +34,4 @@ Back-end
 - Save API data into database
 
 Front-end:
-- Just make it look more beautiful :) pls
+- Just make it look more beautiful :) 
