@@ -2,6 +2,10 @@
 
 - This web application allows users to read the latest news articles from various categories, including business, entertainment, health, science, sports, and technology. Users can select their preferred category and view real-time news content.
 
+- Here is the UI of the project
+  
+![News Website UI](https://github.com/nkduyenpham/django-news/blob/main/Simple%20News%20Website%20UI.png)
+
 ## Features
 - Choose from multiple news categories.
 - View news articles with titles, descriptions, authors, and publication dates.
