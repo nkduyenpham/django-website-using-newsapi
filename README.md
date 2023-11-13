@@ -17,8 +17,7 @@
 ### Prerequisites
 Before you can run the project, make sure you have the following software and API key:
 
-- Python (3.7+)
-- Django (3.0+)
+- Check & Install all needed packages for the projects on [Here](https://github.com/nkduyenpham/django-website-using-newsapi/blob/main/requirements.txt)
 - A valid API key from [NewsAPI](https://newsapi.org/)
 
 #### Technology used in this friendly beginner Django website
